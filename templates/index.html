@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator App</title>
+</head>
+<body>
+    <h1>Translator App</h1>
+    <form action="/" method="post">
+        <label for="input_lang">Enter Input Language (e.g., fr-FR):</label><br>
+        <input type="text" id="input_lang" name="input_lang"><br><br>
+        <label for="output_lang">Enter Output Language (e.g., en):</label><br>
+        <input type="text" id="output_lang" name="output_lang"><br><br>
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_text %}
+    <h2>Translation</h2>
+    <p>Translation: {{ translated_text }}</p>
+    <audio controls>
+        <source src="{{ url_for('get_audio', filename=audio_file) }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</body>
+</html>
